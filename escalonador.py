@@ -1,3 +1,4 @@
+import random
 def main():
     linhas =[] 
     with open("loteria.txt", "r") as tf:
@@ -16,7 +17,18 @@ def alternanciaCircular(linhas):
 
 def loteria(linhas):
     print("no loterias")
+    bilhetes = []
+    linhas.pop(0)
+    somabilhetes = 0
+    for n in linhas:
+        quebra = n.split('|')
+        while int(quebra[3]) != 0:
+            quebra.append()
 
+        bilhetes.append(quebra[3])
+        somabilhetes = somabilhetes + int(quebra[3])
+    #print(bilhetes)
+    print(somabilhetes)
 def prioridades(linhas):
     print("no prioridades")
 
