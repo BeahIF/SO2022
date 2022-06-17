@@ -5,10 +5,12 @@
 # salvar em ordem quanto demorou cada processo
 # retirar sem fazer o append
 def alternanciaCircular(linhas, tempo):
+    
     index = 1
     
     while(len(linhas)>0):
         print("iniciando o processo")
+        
         for i in linhas:
             original =  i.split("|")
             diminuiTempo = int(original[2])-int(tempo)
