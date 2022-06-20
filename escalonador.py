@@ -39,7 +39,6 @@ def escolheEscalonador():
         print("Qual tipo de escalonador voce deseja usar? 0 - para alternancia 1 - para loteria 2 - para prioridades")
         escalonador =0
         if(escalonador==0):
-
                 with open("alternancia.txt", "r") as tf:
                     lines = tf.read().split('\n')        
                 for line in lines:
@@ -57,8 +56,14 @@ def escolheEscalonador():
             
                 loteria(linhas)
         elif (escalonador == 2):
-
-                prioridades(linhas)
+            linha1 =  (linhas[0].split("|"))
+            linhaNovo =[]
+            linhas.pop(0)
+            for i in linhas:
+                i =  i.split("|")
+                copia = str(i[0])+"|"+str(i[1])+"|"+str(i[2])+"|"+str(i[3])+"|"+str(i[4])+"|"+str(i[5])+"|"+str(0) 
+                linhaNovo.append(copia)
+            prioridades(linhaNovo, linha1[1])
 # no loteria é quantos bilheres o processo tem 
 
 
