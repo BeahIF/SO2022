@@ -5,10 +5,14 @@ import logging
 import threading
 import time
 
+global linhas
+linhas =[]
 def thread_function(id):
     logging.info("Thread %s: starting", id)
     print("Digite o novo processo:")
     novo = input()    
+    #esse novo deve entrar em uma variavel global acessada dentro de escolheescalonador
+    linhas.append(novo)
     logging.info("Thread %s: finishing", id)
 
 def main():
@@ -33,8 +37,7 @@ def main():
     logging.info("Main    : all done")
 
 def escolheEscalonador():
-    linhas =[] 
-
+     
     while(True):
         print("Qual tipo de escalonador voce deseja usar? 0 - para alternancia 1 - para loteria 2 - para prioridades")
         escalonador =0
@@ -56,14 +59,19 @@ def escolheEscalonador():
             
                 loteria(linhas)
         elif (escalonador == 2):
-            linha1 =  (linhas[0].split("|"))
-            linhaNovo =[]
-            linhas.pop(0)
-            for i in linhas:
-                i =  i.split("|")
-                copia = str(i[0])+"|"+str(i[1])+"|"+str(i[2])+"|"+str(i[3])+"|"+str(i[4])+"|"+str(i[5])+"|"+str(0) 
-                linhaNovo.append(copia)
-            prioridades(linhaNovo, linha1[1])
+            with open("prioridade.txt", "r") as tf:
+                    lines = tf.read().split('\n')        
+            for line in lines:
+                linhas.append(line)
+            if("prioridade" in linhas[0]):
+                linha1 =  (linhas[0].split("|"))
+                linhaNovo =[]
+                linhas.pop(0)
+                for i in linhas:
+                    i =  i.split("|")
+                    copia = str(i[0])+"|"+str(i[1])+"|"+str(i[2])+"|"+str(i[3])+"|"+str(i[4])+"|"+str(i[5])+"|"+str(0) 
+                    linhaNovo.append(copia)
+                prioridades(linhaNovo, linha1[1])
 # no loteria é quantos bilheres o processo tem 
 
 
