@@ -1,11 +1,19 @@
-import random
+from ast import Delete
+from random import sample
 from alternancia import alternanciaCircular
 from loteria import loteria
 from prioridades import prioridades
-
+import logging
+import threading
+import time
+from loteria import loteria
+def thread_function(id):
+    logging.info("Thread %s: starting", id)
+    time.sleep(2)
+    logging.info("Thread %s: finishing", id)
 def main():
     linhas =[] 
-    with open("alternancia.txt", "r") as tf:
+    with open("loteria.txt", "r") as tf:
         lines = tf.read().split('\n')        
     for line in lines:
         linhas.append(line)
@@ -24,20 +32,10 @@ def main():
         prioridades(linhas)
 
 # no loteria é quantos bilheres o processo tem 
-def loteria(linhas):
-    print("no loterias")
-    bilhetes = []
-    linhas.pop(0)
-    somabilhetes = 0
-    for n in linhas:
-        quebra = n.split('|')
-        while int(quebra[3]) != 0:
-            quebra.append()
 
-        bilhetes.append(quebra[3])
-        somabilhetes = somabilhetes + int(quebra[3])
-    #print(bilhetes)
-    print(somabilhetes)
+        
+        #copia = str(n[0])+"|"+str(n[1])+"|"+str(diminuiTempo)+"|"+str(n[3])+"|"+str(original[4])+"|"+str(original[5])+"|"+str(int(original[6])+1) 
+
 def prioridades(linhas):
     print("no prioridades")
 
