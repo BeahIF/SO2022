@@ -28,9 +28,15 @@ def main():
         alternanciaCircular(linhaNovo,linha1[1])
     elif ("loteria" in linhas[0]):
         loteria(linhas)
-    elif ("prioridades" in linhas[0]):
-        prioridades(linhas)
-
+    elif ("prioridade" in linhas[0]):
+        linha1 =  (linhas[0].split("|"))
+        linhaNovo =[]
+        linhas.pop(0)
+        for i in linhas:
+            i =  i.split("|")
+            copia = str(i[0])+"|"+str(i[1])+"|"+str(i[2])+"|"+str(i[3])+"|"+str(i[4])+"|"+str(i[5])+"|"+str(0) 
+            linhaNovo.append(copia)
+        prioridades(linhaNovo, linha1[1])
 # no loteria é quantos bilheres o processo tem 
 
         

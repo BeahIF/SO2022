@@ -1,7 +1,6 @@
 from ast import Delete
 from random import sample
 import random
-
 from alternancia import alternanciaCircular
 from prioridades import prioridades
 import logging
